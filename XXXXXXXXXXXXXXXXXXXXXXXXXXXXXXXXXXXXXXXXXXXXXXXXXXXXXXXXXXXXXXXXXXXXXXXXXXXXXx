@@ -173,7 +173,7 @@ task.spawn(function()
         if MonF.Visible then
             mFPS.Text = "FPS: "..math.floor(workspace:GetRealPhysicsFPS())
             mPing.Text = "Ping: "..math.floor(S_ST.Network.ServerStatsItem["Data Ping"]:GetValue()).."ms"
-            mMem.Text = "Memory: "..math.floor(S_ST:GetTotalMemoryUsageMb()).." MB"
+            mMem.Text = "內存: "..math.floor(S_ST:GetTotalMemoryUsageMb()).." MB"
         end
     end
 end)
