@@ -106,14 +106,18 @@ AddToggle(T_Combat, "模式: 全都打", "AttackAll")
 
 -- 傳送
 local function TPF(pos) pcall(function() LP.Character.HumanoidRootPart.CFrame = CFrame.new(pos) end) end
+AddButton(T_TP, "--- 跨海傳送 ---", function() end)
 AddButton(T_TP, "前往 一海", function() CommF:InvokeServer("TravelMain") end)
 AddButton(T_TP, "前往 二海", function() CommF:InvokeServer("TravelDressrosa") end)
 AddButton(T_TP, "前往 三海", function() CommF:InvokeServer("TravelZou") end)
 AddButton(T_TP, "传送至天鹅房间", function() TPF(Vector3.new(2286.93, 15.06, 910.51)) end)
 AddButton(T_TP, "传送至豪宅", function() TPF(Vector3.new(-287.37, 305.81, 592.98)) end)
-AddButton(T_TP, "传送至鬼船", function() TPF(Vector3.new(-6501.06, 83.11, -123.52)) end)
+AddButton(T_TP, "传送至鬼船里", function() TPF(Vector3.new(-6501.06, 83.11, -123.52)) end)
+AddButton(T_TP, "传送至鬼船外", function() TPF(Vector3.new(922.78, 123.96, 32842.40)) end)
 AddButton(T_TP, "传送至海洋城堡", function() TPF(Vector3.new(-12463.60, 376.26, -7566.08)) end)
 AddButton(T_TP, "传送至海龜豪宅", function() TPF(Vector3.new(-5060.41, 316.43, -3192.30)) end)
+AddButton(T_TP, "传送至司法島", function() TPF(Vector3.new(-5096.48, 316.43, -3177.91)) end)
+AddButton(T_TP, "传送至九头蛇", function() TPF(Vector3.new(-5027.03, 316.43, -3206.07)) end)
 
 -- 玩家
 AddToggle(T_Player, "自動 V4 覺醒", "AutoV4")
