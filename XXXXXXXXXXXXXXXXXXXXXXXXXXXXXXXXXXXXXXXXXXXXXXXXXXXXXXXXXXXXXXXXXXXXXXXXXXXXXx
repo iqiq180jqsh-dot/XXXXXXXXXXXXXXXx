@@ -85,6 +85,7 @@ AddButton(T_Notice, "👺 秦始皇製作", function() end)
 AddButton(T_Notice, "更新日期:2026/01/18", function() end)
 AddButton(T_Notice, "修改內容:自動v4功能", function() end)
 AddButton(T_Notice, "狀態:腳本測試中", function() end)
+AddButton(T_Notice, "秦始皇現任女友:CVX", function() end)
 AddButton(T_Notice, "❌ 徹底關閉 UI 腳本", function() getgenv().StopLoops = true; SG:Destroy() end)
 
 -- 📂 外部腳本
