@@ -134,7 +134,7 @@ local mFPS = ML("FPS: --", Color3.fromRGB(0, 255, 127))
 local mPing = ML("Ping: --", Color3.fromRGB(255, 200, 0))
 local mMem = ML("內存: -- MB", Color3.fromRGB(0, 190, 255))
 ML("注入器: "..(identifyexecutor and identifyexecutor() or "未知"), Color3.fromRGB(255, 100, 100))
-ML("裝置: "..(S_UI.TouchEnabled and "📱" or "🖥️"), Color3.fromRGB(150, 150, 255))
+ML("裝置: "..(S_UI.TouchEnabled and "手機mobile 📱" or "電腦Pc🖥️"), Color3.fromRGB(150, 150, 255))
 AddButton(Side, "⚡ 性能面板", function() MonF.Visible = not MonF.Visible end)
 
 -- [[ 5. ESP 系統 ]]
