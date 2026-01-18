@@ -1,6 +1,6 @@
--- [[ 秦始皇 - 萬世開平 V68 ]]
+-- [[ 秦始皇 - 萬世開平 V70 ]]
 
-local UI_TAG = "Qin_Final_V68"
+local UI_TAG = "Qin_Final_V70"
 local S_CG = game:GetService("CoreGui")
 if S_CG:FindFirstChild(UI_TAG) then S_CG[UI_TAG]:Destroy(); getgenv().StopLoops = true; task.wait(0.1) end
 getgenv().StopLoops = false
@@ -31,7 +31,7 @@ local Main = Instance.new("Frame", SG); Main.BackgroundColor3 = Color3.fromRGB(1
 local Side = Instance.new("Frame", Main); Side.Size = UDim2.new(0, 130, 1, 0); Side.BackgroundColor3 = Color3.fromRGB(22, 22, 28); Instance.new("UICorner", Side)
 Instance.new("UIListLayout", Side).HorizontalAlignment = "Center"; Instance.new("UIPadding", Side).PaddingTop = UDim.new(0, 10)
 
--- 左側頭像
+-- 左側個人資訊
 local UserPart = Instance.new("Frame", Side); UserPart.Size = UDim2.new(1, 0, 0, 95); UserPart.BackgroundTransparency = 1
 local Avatar = Instance.new("ImageLabel", UserPart); Avatar.Size = UDim2.new(0, 40, 0, 40); Avatar.Position = UDim2.new(0.5, -20, 0, 0); Avatar.Image = "rbxthumb://type=AvatarHeadShot&id="..LP.UserId.."&w=150&h=150"; Instance.new("UICorner", Avatar).CornerRadius = UDim.new(1,0)
 local DN = Instance.new("TextLabel", UserPart); DN.Size = UDim2.new(1,0,0,15); DN.Position = UDim2.new(0,0,0,45); DN.Text = LP.DisplayName; DN.TextColor3 = Color3.new(1,1,1); DN.Font = "GothamBold"; DN.TextSize = 10; DN.BackgroundTransparency = 1
@@ -51,6 +51,10 @@ local function CreateTab(name)
     table.insert(Tabs, F); table.insert(TabButtons, B); return F
 end
 
+local function AddButton(p, t, f)
+    local B = Instance.new("TextButton", p); B.Size = UDim2.new(0.95, 0, 0, 30); B.BackgroundColor3 = Color3.fromRGB(40, 40, 50); B.Text = t; B.TextColor3 = Color3.new(1,1,1); B.Font = "GothamBold"; B.TextSize = 10; Instance.new("UICorner", B); B.MouseButton1Click:Connect(f)
+end
+
 local function AddToggle(p, t, f)
     local B = Instance.new("TextButton", p); B.Size = UDim2.new(0.95, 0, 0, 32); B.BackgroundColor3 = Color3.fromRGB(45, 45, 55); B.Text = t.." [關閉]"; B.TextColor3 = Color3.new(1,1,1); B.Font = "GothamBold"; B.TextSize = 10; Instance.new("UICorner", B)
     B.MouseButton1Click:Connect(function() 
@@ -68,10 +72,6 @@ local function AddSlider(p, t, min, max, def, isDec, cb)
     B.InputBegan:Connect(function(i) if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then local m; m = S_UI.InputChanged:Connect(function(i2) if i2.UserInputType == Enum.UserInputType.MouseMovement or i2.UserInputType == Enum.UserInputType.Touch then local pVal = math.clamp((i2.Position.X - B.AbsolutePosition.X) / B.AbsoluteSize.X, 0, 1); S.Size = UDim2.new(pVal, 0, 1, 0); local val = min + (max - min) * pVal; val = isDec and math.floor(val*100)/100 or math.floor(val); L.Text = t..": "..val; cb(val) end end) S_UI.InputEnded:Connect(function(i3) if i3.UserInputType == Enum.UserInputType.MouseButton1 or i3.UserInputType == Enum.UserInputType.Touch then m:Disconnect() end end) end end)
 end
 
-local function AddButton(p, t, f)
-    local B = Instance.new("TextButton", p); B.Size = UDim2.new(0.95, 0, 0, 30); B.BackgroundColor3 = Color3.fromRGB(40, 40, 50); B.Text = t; B.TextColor3 = Color3.new(1,1,1); B.Font = "GothamBold"; B.TextSize = 10; Instance.new("UICorner", B); B.MouseButton1Click:Connect(f)
-end
-
 -- [[ 3. 分頁與內容 ]]
 local T_Notice = CreateTab("📜 腳本公告")
 local T_Combat = CreateTab("⚔️ 戰鬥秒殺")
@@ -80,13 +80,14 @@ local T_Player = CreateTab("🏃 玩家修改")
 local T_ESP = CreateTab("👁️ 透視相關")
 local T_Scripts = CreateTab("📂 外部腳本")
 
--- 補回公告內容
+-- 公告區
 AddButton(T_Notice, "👺 秦始皇製作", function() end)
-AddButton(T_Notice, "更新日期:2026/01/17", function() end)
+AddButton(T_Notice, "更新日期:2026/01/18", function() end)
+AddButton(T_Notice, "修改內容:自動v4功能", function() end)
 AddButton(T_Notice, "狀態:腳本測試中", function() end)
-AddButton(T_Notice, "❌ 徹底關閉 UI 腳本", function() getgenv().StopLoops = true; SG:Destroy() end) -- 補回按鈕
+AddButton(T_Notice, "❌ 徹底關閉 UI 腳本", function() getgenv().StopLoops = true; SG:Destroy() end)
 
--- 外部腳本
+-- 📂 外部腳本
 AddButton(T_Scripts, "🚀 GG 飛行", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jash-afk/Xuan/refs/heads/main/%E9%A3%9B%E8%A1%8C"))() end)
 AddButton(T_Scripts, "🔥 XA hub", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/XA"))() end)
 AddButton(T_Scripts, "🚀 P 腳本", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/p"))() end)
@@ -120,7 +121,7 @@ AddSlider(T_Player, "視角 FOV", 70, 150, 70, false, function(v) getgenv().CaiH
 AddToggle(T_Player, "修改速度", "SpeedActive"); AddSlider(T_Player, "速度", 16, 500, 16, false, function(v) getgenv().CaiHuaConfig.Settings.WalkSpd = v end)
 AddToggle(T_Player, "修改跳躍", "JumpActive"); AddSlider(T_Player, "跳躍", 50, 600, 50, false, function(v) getgenv().CaiHuaConfig.Settings.JumpPower = v end)
 
--- 透視
+-- 透視 (維持大字體、單行變色)
 AddToggle(T_ESP, "透視總開關", "ESP_Main")
 AddToggle(T_ESP, "顯示名稱與頭像", "ESP_NameOnly")
 AddToggle(T_ESP, "顯示變色血量與距離", "ESP_Health")
@@ -137,7 +138,7 @@ ML("注入器: "..(identifyexecutor and identifyexecutor() or "未知"), Color3.
 ML("裝置: "..(S_UI.TouchEnabled and "手機mobile 📱" or "電腦Pc🖥️"), Color3.fromRGB(150, 150, 255))
 AddButton(Side, "⚡ 性能面板", function() MonF.Visible = not MonF.Visible end)
 
--- [[ 5. ESP 系統 ]]
+-- [[ 5. 核心 ESP ]]
 local function CreateESP(p)
     if p == LP then return end
     local line = Drawing.new("Line"); line.Visible = false
@@ -167,7 +168,20 @@ local function CreateESP(p)
     end)
 end
 
--- [[ 6. 核心循環 ]]
+-- [[ 6. 核心循環與新 V4 邏輯 ]]
+local function callAwakeningRemote()
+    local Backpack = LP:FindFirstChild("Backpack")
+    if not Backpack then return end
+    local Awakening = Backpack:FindFirstChild("Awakening")
+    if not Awakening then return end
+    local RemoteFunc = Awakening:FindFirstChild("RemoteFunction")
+    if not RemoteFunc or not RemoteFunc:IsA("RemoteFunction") then return end
+    
+    pcall(function()
+        RemoteFunc:InvokeServer(true)
+    end)
+end
+
 task.spawn(function()
     while not getgenv().StopLoops and task.wait(0.5) do
         if MonF.Visible then
@@ -185,8 +199,10 @@ S_RS.RenderStepped:Connect(function()
         local H = LP.Character.Humanoid
         H.WalkSpeed = getgenv().CaiHuaConfig.Toggles.SpeedActive and getgenv().CaiHuaConfig.Settings.WalkSpd or 16
         H.JumpPower = getgenv().CaiHuaConfig.Toggles.JumpActive and getgenv().CaiHuaConfig.Settings.JumpPower or 50
+        
+        -- 套用新的 V4 邏輯
         if getgenv().CaiHuaConfig.Toggles.AutoV4 and H.Health > 0 then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaceV4Control", true)
+            callAwakeningRemote()
         end
     end)
 end)
