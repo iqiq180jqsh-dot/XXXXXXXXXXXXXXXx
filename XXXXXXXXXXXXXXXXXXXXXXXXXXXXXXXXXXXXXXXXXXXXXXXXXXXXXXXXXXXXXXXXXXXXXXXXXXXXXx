@@ -93,7 +93,7 @@ AddButton(T_Scripts, "🚀 P 腳本", function() loadstring(game:HttpGet("https:
 AddButton(T_Scripts, "⚡ FPS 優化", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/FPPS"))() end)
 AddButton(T_Scripts, "☠️ 外老輔瞄", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/onsb.scripht.lua"))() end)
 AddButton(T_Scripts, "💩 零垃圾腳本", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jash-afk/Xuan/refs/heads/main/0%E8%85%B3%E6%9C%AC"))() end)
-AddButton(T_Scripts, "💩 LX trash", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/onsb.scripht.lua"))() end)
+AddButton(T_Scripts, "💩 LX trash", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/josh/refs/heads/main/trash%20LX"))() end)
 
 -- 戰鬥
 AddToggle(T_Combat, "開啟快速攻擊", "FastAttack")
