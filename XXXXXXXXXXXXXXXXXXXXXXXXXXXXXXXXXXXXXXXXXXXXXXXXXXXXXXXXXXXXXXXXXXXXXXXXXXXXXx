@@ -103,17 +103,20 @@ AddSlider(T_Combat, "攻擊範圍", 100, 5000, 500, false, function(v) getgenv()
 AddToggle(T_Combat, "模式: 只打怪物", "AttackMonsters")
 AddToggle(T_Combat, "模式: 只打玩家", "AttackPlayers")
 AddToggle(T_Combat, "模式: 全都打", "AttackAll")
+AddToggle(T_Combat, "如果要都打的話請把上方兩個只打怪物和玩家關掉")
 
 -- 傳送
 local function TPF(pos) pcall(function() LP.Character.HumanoidRootPart.CFrame = CFrame.new(pos) end) end
-AddButton(T_TP, "--- 跨海傳送 ---", function() end)
+AddButton(T_TP, "--- 海域傳送 ---", function() end)
 AddButton(T_TP, "前往 一海", function() CommF:InvokeServer("TravelMain") end)
 AddButton(T_TP, "前往 二海", function() CommF:InvokeServer("TravelDressrosa") end)
 AddButton(T_TP, "前往 三海", function() CommF:InvokeServer("TravelZou") end)
+AddButton(T_TP, "--- 二海地區 ---", function() end)
 AddButton(T_TP, "传送至天鹅房间", function() TPF(Vector3.new(2286.93, 15.06, 910.51)) end)
 AddButton(T_TP, "传送至豪宅", function() TPF(Vector3.new(-287.37, 305.81, 592.98)) end)
 AddButton(T_TP, "传送至鬼船里", function() TPF(Vector3.new(-6501.06, 83.11, -123.52)) end)
 AddButton(T_TP, "传送至鬼船外", function() TPF(Vector3.new(922.78, 123.96, 32842.40)) end)
+AddButton(T_TP, "--- 三海地區 ---", function() end)
 AddButton(T_TP, "传送至海洋城堡", function() TPF(Vector3.new(-12463.60, 376.26, -7566.08)) end)
 AddButton(T_TP, "传送至海龜豪宅", function() TPF(Vector3.new(-5060.41, 316.43, -3192.30)) end)
 AddButton(T_TP, "传送至司法島", function() TPF(Vector3.new(-5096.48, 316.43, -3177.91)) end)
@@ -129,7 +132,7 @@ AddToggle(T_Player, "修改跳躍", "JumpActive"); AddSlider(T_Player, "跳躍",
 AddToggle(T_ESP, "透視總開關", "ESP_Main")
 AddToggle(T_ESP, "顯示名稱與頭像", "ESP_NameOnly")
 AddToggle(T_ESP, "顯示變色血量與距離", "ESP_Health")
-AddToggle(T_ESP, "變色射線", "ESP_Tracer")
+AddToggle(T_ESP, "追蹤射線(ROG版)", "ESP_Tracer")
 
 -- [[ 4. 性能面板 ]]
 local MonF = Instance.new("Frame", SG); MonF.Size = UDim2.new(0, 220, 0, 170); MonF.Position = UDim2.new(0.5, -110, 0.05, 0); MonF.BackgroundColor3 = Color3.fromRGB(10,10,15); MonF.Visible = false; Instance.new("UICorner", MonF); ApplyROG(MonF, 2)
@@ -139,7 +142,7 @@ local mFPS = ML("FPS: --", Color3.fromRGB(0, 255, 127))
 local mPing = ML("Ping: --", Color3.fromRGB(255, 200, 0))
 local mMem = ML("內存: -- MB", Color3.fromRGB(0, 190, 255))
 ML("注入器: "..(identifyexecutor and identifyexecutor() or "未知"), Color3.fromRGB(255, 100, 100))
-ML("裝置: "..(S_UI.TouchEnabled and "手機mobile 📱" or "電腦Pc🖥️"), Color3.fromRGB(150, 150, 255))
+ML("裝置: "..(S_UI.TouchEnabled and "手機mobile 📱" or "電腦Pc 🖥️"), Color3.fromRGB(150, 150, 255))
 AddButton(Side, "⚡ 性能面板", function() MonF.Visible = not MonF.Visible end)
 
 -- [[ 5. 核心 ESP ]]
