@@ -1,6 +1,6 @@
--- [[ 秦始皇 - 萬世開平 V70 ]]
+-- [[ 秦始皇 - 菜花腳本]]
 
-local UI_TAG = "Qin_Final_V70"
+local UI_TAG = "菜花中心"
 local S_CG = game:GetService("CoreGui")
 if S_CG:FindFirstChild(UI_TAG) then S_CG[UI_TAG]:Destroy(); getgenv().StopLoops = true; task.wait(0.1) end
 getgenv().StopLoops = false
@@ -73,12 +73,12 @@ local function AddSlider(p, t, min, max, def, isDec, cb)
 end
 
 -- [[ 3. 分頁與內容 ]]
-local T_Notice = CreateTab("📜 腳本公告")
-local T_Combat = CreateTab("⚔️ 戰鬥秒殺")
-local T_TP = CreateTab("📍 傳送座標")
-local T_Player = CreateTab("🏃 玩家修改")
-local T_ESP = CreateTab("👁️ 透視相關")
-local T_Scripts = CreateTab("📂 外部腳本")
+local T_Notice = CreateTab("公告")
+local T_Combat = CreateTab("功速+範圍")
+local T_TP = CreateTab("傳送")
+local T_Player = CreateTab("玩家修改")
+local T_ESP = CreateTab("透視")
+local T_Scripts = CreateTab("外部腳本")
 
 -- 公告區
 AddButton(T_Notice, "👺 秦始皇製作", function() end)
@@ -89,13 +89,13 @@ AddButton(T_Notice, "秦始皇現任女友:CVX", function() end)
 AddButton(T_Notice, "❌ 徹底關閉 UI 腳本", function() getgenv().StopLoops = true; SG:Destroy() end)
 
 -- 📂 外部腳本
-AddButton(T_Scripts, "🚀 GG 飛行", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jash-afk/Xuan/refs/heads/main/%E9%A3%9B%E8%A1%8C"))() end)
-AddButton(T_Scripts, "🔥 XA hub", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/XA"))() end)
-AddButton(T_Scripts, "🚀 P 腳本", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/p"))() end)
-AddButton(T_Scripts, "⚡ FPS 優化", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/FPPS"))() end)
-AddButton(T_Scripts, "☠️ 外老輔瞄", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/onsb.scripht.lua"))() end)
-AddButton(T_Scripts, "💩 零垃圾腳本", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jash-afk/Xuan/refs/heads/main/0%E8%85%B3%E6%9C%AC"))() end)
-AddButton(T_Scripts, "💩 LX trash", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/josh/refs/heads/main/trash%20LX"))() end)
+AddButton(T_Scripts, "GG 飛行", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jash-afk/Xuan/refs/heads/main/%E9%A3%9B%E8%A1%8C"))() end)
+AddButton(T_Scripts, "XA hub", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/XA"))() end)
+AddButton(T_Scripts, "P 腳本", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/p"))() end)
+AddButton(T_Scripts, "FPS 優化", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/FPPS"))() end)
+AddButton(T_Scripts, "外老輔瞄", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/Xuan/refs/heads/main/onsb.scripht.lua"))() end)
+AddButton(T_Scripts, "零腳本", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jash-afk/Xuan/refs/heads/main/0%E8%85%B3%E6%9C%AC"))() end)
+AddButton(T_Scripts, "LX hub", function() loadstring(game:HttpGet("https://raw.githubusercontent.com/iqiq180jush-cell/josh/refs/heads/main/trash%20LX"))() end)
 
 -- 戰鬥
 AddToggle(T_Combat, "開啟快速攻擊", "FastAttack")
@@ -144,7 +144,7 @@ local mPing = ML("Ping: --", Color3.fromRGB(255, 200, 0))
 local mMem = ML("內存: -- MB", Color3.fromRGB(0, 190, 255))
 ML("注入器: "..(identifyexecutor and identifyexecutor() or "未知"), Color3.fromRGB(255, 100, 100))
 ML("裝置: "..(S_UI.TouchEnabled and "手機mobile 📱" or "電腦Pc 🖥️"), Color3.fromRGB(150, 150, 255))
-AddButton(Side, "⚡ 性能面板", function() MonF.Visible = not MonF.Visible end)
+AddButton(Side, "性能面板", function() MonF.Visible = not MonF.Visible end)
 
 -- [[ 5. 核心 ESP ]]
 local function CreateESP(p)
